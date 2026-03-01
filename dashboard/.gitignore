@@ -1,0 +1,23 @@
+# Data files (too large for GitHub)
+data/raw/
+data/processed/
+
+# MLflow runs (too large)
+mlruns/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Anaconda
+*.egg-info/
+dist/
+build/
+
+# VS Code
+.vscode/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/

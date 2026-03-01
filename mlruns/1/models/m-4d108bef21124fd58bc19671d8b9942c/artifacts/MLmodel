@@ -1,0 +1,23 @@
+artifact_path: file:///D:/PredictiveMaintenance/mlruns/1/models/m-4d108bef21124fd58bc19671d8b9942c/artifacts
+flavors:
+  python_function:
+    config:
+      device: null
+    data: data
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pytorch
+    pickle_module_name: mlflow.pytorch.pickle_module
+    python_version: 3.10.19
+  pytorch:
+    code: null
+    model_data: data
+    pytorch_version: 2.10.0+cpu
+mlflow_version: 3.10.0
+model_id: m-4d108bef21124fd58bc19671d8b9942c
+model_size_bytes: 153240
+model_uuid: m-4d108bef21124fd58bc19671d8b9942c
+prompts: null
+run_id: a24d61de5eaa4bd486c297957baa4e87
+utc_time_created: '2026-03-01 08:15:51.823547'
