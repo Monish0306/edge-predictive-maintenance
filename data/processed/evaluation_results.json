@@ -1,0 +1,86 @@
+{
+  "FD001": {
+    "dataset": "FD001",
+    "test_samples": 10096,
+    "accuracy": 0.9882,
+    "f1_score": 0.8166,
+    "precision": 0.836,
+    "recall": 0.7982,
+    "auc_roc": 0.9968,
+    "confusion_matrix": [
+      [
+        9712,
+        52
+      ],
+      [
+        67,
+        265
+      ]
+    ],
+    "anomaly_rate_true": 0.0329,
+    "anomaly_rate_pred": 0.0314
+  },
+  "FD002": {
+    "dataset": "FD002",
+    "test_samples": 26252,
+    "accuracy": 0.7419,
+    "f1_score": 0.0811,
+    "precision": 0.0476,
+    "recall": 0.2751,
+    "auc_roc": 0.5409,
+    "confusion_matrix": [
+      [
+        19178,
+        5987
+      ],
+      [
+        788,
+        299
+      ]
+    ],
+    "anomaly_rate_true": 0.0414,
+    "anomaly_rate_pred": 0.2394
+  },
+  "FD003": {
+    "dataset": "FD003",
+    "test_samples": 13596,
+    "accuracy": 0.9786,
+    "f1_score": 0.1983,
+    "precision": 0.5,
+    "recall": 0.1237,
+    "auc_roc": 0.7932,
+    "confusion_matrix": [
+      [
+        13269,
+        36
+      ],
+      [
+        255,
+        36
+      ]
+    ],
+    "anomaly_rate_true": 0.0214,
+    "anomaly_rate_pred": 0.0053
+  },
+  "FD004": {
+    "dataset": "FD004",
+    "test_samples": 33844,
+    "accuracy": 0.7606,
+    "f1_score": 0.0631,
+    "precision": 0.0351,
+    "recall": 0.316,
+    "auc_roc": 0.5537,
+    "confusion_matrix": [
+      [
+        25470,
+        7510
+      ],
+      [
+        591,
+        273
+      ]
+    ],
+    "anomaly_rate_true": 0.0255,
+    "anomaly_rate_pred": 0.23
+  }
+}

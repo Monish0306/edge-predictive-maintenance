@@ -1,0 +1,26 @@
+{
+  "FD001": {
+    "engines": 100,
+    "sensors": 15,
+    "sequences": 17631,
+    "anomaly_rate": 0.1758
+  },
+  "FD002": {
+    "engines": 260,
+    "sensors": 21,
+    "sequences": 45959,
+    "anomaly_rate": 0.1754
+  },
+  "FD003": {
+    "engines": 100,
+    "sensors": 16,
+    "sequences": 21720,
+    "anomaly_rate": 0.1427
+  },
+  "FD004": {
+    "engines": 249,
+    "sensors": 21,
+    "sequences": 53779,
+    "anomaly_rate": 0.1435
+  }
+}

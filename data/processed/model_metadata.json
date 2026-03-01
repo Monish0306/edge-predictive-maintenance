@@ -1,0 +1,15 @@
+{
+  "num_sensors": 15,
+  "pytorch_size_kb": 148.18,
+  "onnx_fp32_size_kb": 313.62,
+  "onnx_int8_size_kb": 313.62,
+  "size_reduction_pct": 111.65,
+  "avg_latency_int8_ms": 1.0,
+  "parameters": 18690,
+  "accuracy_diff": 0.001,
+  "model_type": "DualHead_Transformer",
+  "outputs": [
+    "anomaly_prob",
+    "rul_cycles"
+  ]
+}

@@ -42,18 +42,56 @@ class MaintenanceAgent:
                          'issue': 'Bleed valve leak', 
                          'fix': 'Inspect bleed valves'},
         }
+
+    def calculate_health_score(self, anomaly_prob, rul_cycles=None):
+        """
+        Convert raw probability into intuitive 0-100 health score.
+        Like a car dashboard — easy for factory workers to understand.
+        
+        100 = Perfect health
+        0   = Imminent failure
+        """
+        # Base score from anomaly probability
+        base_score = (1 - anomaly_prob) * 100
+
+        # Adjust with RUL if available
+        if rul_cycles is not None:
+            # RUL contribution: 0 cycles = bad, 125 cycles = good
+            rul_score = min(rul_cycles / 125.0, 1.0) * 100
+            # Weighted average
+            health_score = 0.6 * base_score + 0.4 * rul_score
+        else:
+            health_score = base_score
+
+        health_score = max(0, min(100, health_score))
+
+        # Grade like a report card
+        if health_score >= 80:
+            grade = 'A'
+            color = 'green'
+        elif health_score >= 60:
+            grade = 'B'
+            color = 'yellow'
+        elif health_score >= 40:
+            grade = 'C'
+            color = 'orange'
+        elif health_score >= 20:
+            grade = 'D'
+            color = 'red'
+        else:
+            grade = 'F'
+            color = 'darkred'
+
+        return {
+            'score': round(health_score, 1),
+            'grade': grade,
+            'color': color,
+            'label': f"{round(health_score, 1)}/100 (Grade {grade})"
+        }
     
-    def analyze_anomaly(self, anomaly_prob, sensor_readings, sensor_names):
+    def analyze_anomaly(self, anomaly_prob, sensor_readings, sensor_names, rul_cycles=None):
         """
         Main agent function — analyze and respond to anomaly
-        
-        Args:
-            anomaly_prob: float (0-1) from model
-            sensor_readings: dict of {sensor_name: value}
-            sensor_names: list of sensor names
-        
-        Returns:
-            action_plan: dict with full agent response
         """
         self.total_predictions += 1
         
@@ -63,9 +101,13 @@ class MaintenanceAgent:
         maintenance_schedule = self._schedule_maintenance(severity)
         recommended_actions = self._get_actions(triggered_sensors, severity)
         
+        # New health score calculation
+        health_report = self.calculate_health_score(anomaly_prob, rul_cycles)
+        
         action_plan = {
             'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             'anomaly_probability': round(float(anomaly_prob), 4),
+            'health_score': health_report,
             'severity': severity,
             'alert': severity in ['HIGH', 'CRITICAL'],
             'triggered_sensors': triggered_sensors,
@@ -94,10 +136,9 @@ class MaintenanceAgent:
             return 'CRITICAL'
     
     def _find_triggered_sensors(self, sensor_readings):
-        """Find which sensors are abnormal (above 0.8 after normalization)"""
         triggered = []
         for sensor_name, value in sensor_readings.items():
-            if value > 0.8 or value < 0.1:  # extreme values
+            if value > 0.8 or value < 0.1:
                 if sensor_name in self.sensor_rules:
                     triggered.append(sensor_name)
         return triggered
@@ -116,27 +157,22 @@ class MaintenanceAgent:
     
     def _get_actions(self, triggered_sensors, severity):
         actions = []
-        
         if severity == 'NORMAL':
             actions.append("Continue normal operation. Next scheduled check in 30 days.")
-        
         elif severity == 'LOW':
             actions.append("Monitor closely. Increase sensor polling frequency to every hour.")
             actions.append("Log readings for trend analysis.")
-        
         elif severity == 'MEDIUM':
             actions.append("Schedule inspection within 7 days.")
             for sensor in triggered_sensors:
                 if sensor in self.sensor_rules:
                     actions.append(f"→ {self.sensor_rules[sensor]['fix']}")
-        
         elif severity == 'HIGH':
             actions.append("⚠️  IMMEDIATE INSPECTION REQUIRED within 48 hours!")
             actions.append("Reduce operational load by 20%.")
             for sensor in triggered_sensors:
                 if sensor in self.sensor_rules:
                     actions.append(f"→ PRIORITY FIX: {self.sensor_rules[sensor]['fix']}")
-        
         elif severity == 'CRITICAL':
             actions.append("🚨 SHUTDOWN RECOMMENDED — Failure imminent!")
             actions.append("Alert maintenance team immediately.")
@@ -144,7 +180,6 @@ class MaintenanceAgent:
             for sensor in triggered_sensors:
                 if sensor in self.sensor_rules:
                     actions.append(f"→ EMERGENCY: {self.sensor_rules[sensor]['fix']}")
-        
         return actions
     
     def _schedule_maintenance(self, severity):
@@ -154,7 +189,7 @@ class MaintenanceAgent:
             'LOW':      (now + timedelta(days=14)).strftime('%Y-%m-%d'),
             'MEDIUM':   (now + timedelta(days=7)).strftime('%Y-%m-%d'),
             'HIGH':     (now + timedelta(days=2)).strftime('%Y-%m-%d'),
-            'CRITICAL': now.strftime('%Y-%m-%d'),  # today
+            'CRITICAL': now.strftime('%Y-%m-%d'),
         }
         return schedule[severity]
     
@@ -169,7 +204,6 @@ class MaintenanceAgent:
         return downtimes[severity]
     
     def _estimate_cost_saving(self, severity):
-        # Rough estimates based on industry data
         savings = {
             'NORMAL': '$0',
             'LOW': '$500-1,000',
@@ -180,15 +214,10 @@ class MaintenanceAgent:
         return savings[severity]
     
     def should_retrain(self):
-        """Check if model needs retraining — MLOps trigger"""
         if self.total_predictions < 100:
             return False, "Not enough predictions yet"
-        
-        # If too many alerts recently, might be drift
         recent_alerts = len([a for a in self.alert_history[-50:] 
                              if a['severity'] == 'CRITICAL'])
-        
         if recent_alerts > 10:
             return True, "High critical alert rate — possible data drift"
-        
         return False, "Model performing normally"
