@@ -1,0 +1,11 @@
+{
+  "manager_email": "monish0329@gmail.com",
+  "sender_email": "monish0329@gmail.com",
+  "sender_app_password": "YOUR_APP_PASSWORD_HERE",
+  "smtp_host": "smtp.gmail.com",
+  "smtp_port": 587,
+  "alert_cooldown_minutes": 15,
+  "min_severity_to_email": "HIGH",
+  "company_name": "Edge AI Predictive Maintenance",
+  "facility_name": "NASA Turbofan Facility"
+}

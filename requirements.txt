@@ -8,3 +8,7 @@ onnxruntime==1.21.0
 streamlit==1.43.2
 plotly==5.22.0
 onnxscript==0.2.1
+dash==2.18.2
+dash-bootstrap-components==1.6.0
+fpdf2==2.8.2
+kaleido==0.2.1

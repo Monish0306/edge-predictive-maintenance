@@ -1,6 +1,6 @@
 {
-  "mean_anomaly_prob": 0.5723619231110743,
-  "alert_rate": 0.6,
+  "mean_anomaly_prob": 0.00102783203125,
+  "alert_rate": 0.0,
   "created_at": "2026-03-01T17:00:45.471265",
-  "last_retrain": "2026-03-01T17:12:42.162813"
+  "last_retrain": "2026-03-16T23:38:22.722485"
 }

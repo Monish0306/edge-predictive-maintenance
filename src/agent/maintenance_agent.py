@@ -1,6 +1,13 @@
 import numpy as np
 from datetime import datetime, timedelta
 
+# Lazy import so dashboard still works even without email configured
+try:
+    from src.agent.alert_emailer import AlertEmailer
+    _emailer = AlertEmailer()
+except Exception:
+    _emailer = None
+
 class MaintenanceAgent:
     """
     Rule-based + ML Agent that:
@@ -14,6 +21,8 @@ class MaintenanceAgent:
         self.alert_history = []
         self.false_positive_count = 0
         self.total_predictions = 0
+        self.prob_history: list[float] = []   # rolling probability log for email charts
+        self.emailer = _emailer
         
         # Sensor → possible cause mapping
         self.sensor_rules = {
@@ -89,9 +98,11 @@ class MaintenanceAgent:
             'label': f"{round(health_score, 1)}/100 (Grade {grade})"
         }
     
-    def analyze_anomaly(self, anomaly_prob, sensor_readings, sensor_names, rul_cycles=None):
+    def analyze_anomaly(self, anomaly_prob, sensor_readings, sensor_names,
+                        rul_cycles=None, engine_id=1):
         """
-        Main agent function — analyze and respond to anomaly
+        Main agent function — analyze and respond to anomaly.
+        engine_id: used for email cooldown tracking.
         """
         self.total_predictions += 1
         
@@ -118,9 +129,23 @@ class MaintenanceAgent:
             'estimated_cost_saved': self._estimate_cost_saving(severity),
         }
         
+        # Track probability history (keep last 60 readings for email charts)
+        self.prob_history.append(float(anomaly_prob))
+        if len(self.prob_history) > 60:
+            self.prob_history = self.prob_history[-60:]
+
         if action_plan['alert']:
             self.alert_history.append(action_plan)
-        
+            # Fire email alert asynchronously
+            if self.emailer:
+                self.emailer.send_alert_email(
+                    alert_data=action_plan,
+                    prob_history=list(self.prob_history),
+                    sensor_importance=None,   # dashboard passes enriched data
+                    engine_id=engine_id if engine_id else 1,
+                    async_send=True
+                )
+
         return action_plan
     
     def _get_severity(self, prob):
