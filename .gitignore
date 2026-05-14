@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.Python
+env/
+venv/
+data/raw/*.txt
+data/processed/*.npy
+mlruns/
+models/saved/*.pth
+.vscode/
+.DS_Store
+*.log
