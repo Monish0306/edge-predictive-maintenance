@@ -1,12 +1,28 @@
+# Python
 __pycache__/
 *.py[cod]
 .Python
 env/
 venv/
+
+# Data files (TOO LARGE for GitHub)
 data/raw/*.txt
 data/processed/*.npy
+data/processed/*.json
+
+# MLflow
 mlruns/
+
+# Models
 models/saved/*.pth
+
+# IDEs
 .vscode/
+.idea/
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Logs
 *.log
