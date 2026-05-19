@@ -99,6 +99,16 @@ Dashboard  API    WebApp Tracking
 - **scikit-learn** — Data preprocessing
 - **Docker** — Containerization
 
+### 3️⃣ Run React Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend runs at: **http://localhost:8080**
+
 ### Frontend
 - **Streamlit** — Python dashboard (9 pages)
 - **React 18** — Modern web app
@@ -111,6 +121,39 @@ Dashboard  API    WebApp Tracking
 - **Render.com** — Backend hosting (free)
 - **Vercel** — Frontend hosting (free)
 - **GitHub** — Version control
+
+## ⚡ Quick Start (One-Click Launch)
+
+### Windows
+
+Double-click `start-both.bat` to launch all servers:
+- ✅ Backend API (port 8000)
+- ✅ React Frontend (port 8080)
+- ✅ Streamlit Dashboard (port 8501)
+
+OR double-click `start-servers.bat` for just Backend + Frontend (no Streamlit).
+
+All servers will auto-start and browser will open to http://localhost:8080
+
+### Manual Start
+
+**Terminal 1 - Backend:**
+```bash
+conda activate predmaint
+python -m uvicorn start_api:app --reload --port 8000
+```
+
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm run dev
+```
+
+**Terminal 3 - Streamlit (Optional):**
+```bash
+conda activate predmaint
+streamlit run dashboard/app.py
+```
 
 ---
 
