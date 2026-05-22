@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppLayout } from "./components/AppLayout";
+import CustomCursor from "./components/CustomCursor";
 import LiveMonitor from "./pages/LiveMonitor";
 import FleetOverview from "./pages/FleetOverview";
 import Analytics from "./pages/Analytics";
@@ -23,6 +24,10 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+
+      {/* ⚡ Lightning Bolt Custom Cursor */}
+      <CustomCursor />
+
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
