@@ -4,29 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edge AI Predictive Maintenance</title>
-    <meta name="description" content="Industry 4.0 AI System — Predicts equipment failures before they happen. 98.82% accuracy, 0.20ms edge inference." />
+    <meta name="description" content="Industry 4.0 AI System — 98.82% accuracy, 0.20ms edge inference." />
     <meta name="author" content="Monish Valiveti" />
-
-    <!-- Animated Favicon - Spinning Gear -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-      <defs>
-        <linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'>
-          <stop offset='0%25' style='stop-color:%233B82F6'/>
-          <stop offset='100%25' style='stop-color:%238B5CF6'/>
-        </linearGradient>
-      </defs>
-      <circle cx='50' cy='50' r='48' fill='url(%23g)'/>
-      <text y='62' x='50' font-size='52' text-anchor='middle' fill='white'>⚙</text>
-    </svg>" />
-
-    <meta property="og:title" content="Edge AI Predictive Maintenance System" />
-    <meta property="og:description" content="Predicts equipment failures days in advance." />
+    <meta property="og:title" content="Edge AI Predictive Maintenance" />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Animated favicon script -->
+    <script>
+      const frames = [
+        // Frame 1 - bright
+        `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+          <circle cx='50' cy='50' r='48' fill='%230A0F1E' stroke='%23F59E0B' stroke-width='3'/>
+          <circle cx='50' cy='50' r='43' fill='none' stroke='%23F59E0B' stroke-width='1' opacity='0.6'/>
+          <path d='M57 12 L30 54 L48 54 L43 88 L70 46 L52 46 Z'
+            fill='%23FCD34D' stroke='%23FCD34D' stroke-width='1' stroke-linejoin='round'/>
+        </svg>`,
+
+        // Frame 2 - medium
+        `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+          <circle cx='50' cy='50' r='48' fill='%230A0F1E' stroke='%23F59E0B' stroke-width='2'/>
+          <circle cx='50' cy='50' r='44' fill='none' stroke='%23F59E0B' stroke-width='1' opacity='0.3'/>
+          <path d='M57 12 L30 54 L48 54 L43 88 L70 46 L52 46 Z'
+            fill='%23F59E0B' stroke='%23F59E0B' stroke-width='1' stroke-linejoin='round'/>
+        </svg>`,
+
+        // Frame 3 - dim
+        `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+          <circle cx='50' cy='50' r='48' fill='%230A0F1E' stroke='%23D97706' stroke-width='2'/>
+          <circle cx='50' cy='50' r='42' fill='none' stroke='%23D97706' stroke-width='1' opacity='0.2'/>
+          <path d='M57 12 L30 54 L48 54 L43 88 L70 46 L52 46 Z'
+            fill='%23D97706' stroke='%23D97706' stroke-width='1' stroke-linejoin='round'/>
+        </svg>`,
+
+        // Frame 4 - medium bright
+        `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+          <circle cx='50' cy='50' r='48' fill='%230A0F1E' stroke='%23F59E0B' stroke-width='2.5'/>
+          <circle cx='50' cy='50' r='45' fill='none' stroke='%23F59E0B' stroke-width='1' opacity='0.5'/>
+          <path d='M57 12 L30 54 L48 54 L43 88 L70 46 L52 46 Z'
+            fill='%23FBBF24' stroke='%23FBBF24' stroke-width='1' stroke-linejoin='round'/>
+        </svg>`,
+      ];
+
+      let currentFrame = 0;
+      const favicon = document.querySelector("link[rel='icon']");
+
+      setInterval(() => {
+        const svg = frames[currentFrame];
+        const encoded = `data:image/svg+xml,${svg}`;
+        favicon.href = encoded;
+        currentFrame = (currentFrame + 1) % frames.length;
+      }, 500);
+    </script>
   </body>
 </html>
