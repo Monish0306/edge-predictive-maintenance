@@ -19,6 +19,8 @@ import DatasetStats from "./pages/DatasetStats";
 import CostSavings from "./pages/CostSavings";
 import ModelInfo from "./pages/ModelInfo";
 import NotFound from "./pages/NotFound";
+import DigitalTwin from "./pages/DigitalTwin";
+import Notifications from "./pages/Notifications";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +58,8 @@ const App = () => {
                 <Routes>
                   <Route element={<AppLayout />}>
                     <Route path="/" element={<LiveMonitor />} />
+                    <Route path="/notifications" element={<Notifications />} />
+                    <Route path="/digital-twin" element={<DigitalTwin />} />
                     <Route path="/fleet" element={<FleetOverview />} />
                     <Route path="/analytics" element={<Analytics />} />
                     <Route path="/heatmap" element={<SensorHeatmap />} />

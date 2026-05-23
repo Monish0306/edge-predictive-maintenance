@@ -3,10 +3,11 @@ import { motion } from "framer-motion";
 import {
   Activity, Cpu, BarChart3, Map, Clock, FileText,
   Bot, Database, DollarSign, Settings,
-  ChevronLeft, ChevronRight,
+  ChevronLeft, ChevronRight, Bell,
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+
 
 const items = [
   { title: "Live Monitor",     url: "/",          icon: Activity,   color: "#EF4444" },
@@ -19,6 +20,8 @@ const items = [
   { title: "Dataset Stats",    url: "/datasets",  icon: Database,   color: "#6366F1" },
   { title: "Cost Savings",     url: "/savings",   icon: DollarSign, color: "#10B981" },
   { title: "Model Info",       url: "/model",     icon: Settings,   color: "#94A3B8" },
+  { title: "Digital Twin", url: "/digital-twin", icon: Cpu, color: "#06B6D4" },
+  { title: "Notifications", url: "/notifications", icon: Bell, color: "#F59E0B" },
 ];
 
 export const AppSidebar = () => {
