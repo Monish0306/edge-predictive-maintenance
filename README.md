@@ -7,13 +7,15 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.134-green?logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.32-FF4B4B?logo=streamlit&logoColor=white)
+![Three.js](https://img.shields.io/badge/Three.js-3D_Twin-black?logo=threedotjs&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 **🏭 Industry 4.0 AI System for Equipment Failure Prediction**
 
 *Predicts machine failures days/weeks in advance • 98.82% accuracy • 0.20ms edge inference*
 
-[Live Demo](https://predictive-maintenance-web.vercel.app) • [API Docs](https://predictive-maintenance-api.onrender.com/docs) • [Documentation](#-complete-documentation)
+[🌐 Live Demo](https://edge-predictive-maintenance.vercel.app) • [🔌 API Docs](https://edge-ai-fastapi.onrender.com/docs) • [💻 GitHub](https://github.com/Monish0306/edge-predictive-maintenance)
 
 </div>
 
@@ -58,102 +60,86 @@ Instead of waiting for breakdowns, our AI system:
 
 ---
 
+## 🚀 Live Demo
+
+| Component | URL |
+|-----------|-----|
+| 🌐 **Web Dashboard** | [edge-predictive-maintenance.vercel.app](https://edge-predictive-maintenance.vercel.app) |
+| 🔌 **Backend API** | [edge-ai-fastapi.onrender.com](https://edge-ai-fastapi.onrender.com) |
+| 📚 **API Docs** | [edge-ai-fastapi.onrender.com/docs](https://edge-ai-fastapi.onrender.com/docs) |
+| 💻 **GitHub** | [Monish0306/edge-predictive-maintenance](https://github.com/Monish0306/edge-predictive-maintenance) |
+
+> ⚠️ Free tier backend sleeps after 15 mins of inactivity. First request takes 30-60s to wake up.
+
+---
+
 ## 🏗️ System Architecture
+
+```
 NASA Turbofan Sensors (15 sensors × 30 cycles)
-↓
-Data Preprocessing
-• Normalize to 0-1
-• 30-cycle windows
-↓
-Dual-Head Transformer
-• 18,690 parameters
-• 2 layers, 4 heads
-↓
-Two Predictions:
-├─ Anomaly (0-1 probability)
-└─ RUL (cycles remaining)
-↓
-ONNX Conversion
-• 0.20ms inference
-• Edge-compatible
-↓
-Maintenance Agent
-• Root cause analysis
-• Plain-English reports
-↓
-┌──────┬───────┬──────┐
-↓      ↓       ↓      ↓
-Streamlit FastAPI React MLflow
-Dashboard  API    WebApp Tracking
+              ↓
+    Data Preprocessing
+    • Normalize to 0-1
+    • 30-cycle windows
+              ↓
+   Dual-Head Transformer
+   • 18,690 parameters
+   • 2 layers, 4 heads
+              ↓
+   Two Predictions:
+   ├─ Anomaly (0-1 probability)
+   └─ RUL (cycles remaining)
+              ↓
+      ONNX Conversion
+      • 0.20ms inference
+      • Edge-compatible
+              ↓
+   Maintenance Agent
+   • Root cause analysis
+   • Plain-English reports
+              ↓
+    ┌──────┬───────┬──────┐
+    ↓      ↓       ↓      ↓
+Streamlit FastAPI React  MLflow
+Dashboard  API   WebApp Tracking
+```
 
 ---
 
 ## 🛠️ Technology Stack
 
 ### Backend & ML
-- **PyTorch** 2.0 — Deep learning framework
-- **Transformer** — Custom architecture (attention mechanism)
-- **ONNX Runtime** — Edge inference (250× faster)
-- **FastAPI** — REST API with auto-docs
-- **MLflow** — Experiment tracking + drift detection
-- **scikit-learn** — Data preprocessing
-- **Docker** — Containerization
 
-### 3️⃣ Run React Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend runs at: **http://localhost:8080**
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **PyTorch** | 2.0 | Deep learning Transformer model |
+| **ONNX Runtime** | 1.21 | Edge inference (250× faster) |
+| **FastAPI** | 0.134 | REST API with auto-docs |
+| **MLflow** | Latest | Experiment tracking + drift detection |
+| **scikit-learn** | 1.3 | Data preprocessing (MinMaxScaler) |
+| **Docker** | Latest | Containerization |
 
 ### Frontend
-- **Streamlit** — Python dashboard (9 pages)
-- **React 18** — Modern web app
-- **Tailwind CSS** — Utility-first styling
-- **Framer Motion** — Animations
-- **Recharts** — Interactive charts
-- **shadcn/ui** — UI components
+
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **React** | 18 | Modern web app |
+| **Vite** | 5.0 | Build tool (10× faster) |
+| **Tailwind CSS** | 3.4 | Utility-first dark theme |
+| **Framer Motion** | 11 | Professional animations |
+| **Three.js** | Latest | 3D Digital Twin engine model |
+| **@react-three/fiber** | 8.17 | React renderer for Three.js |
+| **Recharts** | 2.10 | Real-time interactive charts |
+| **shadcn/ui** | Latest | Professional UI components |
+| **Lucide React** | Latest | Icons |
 
 ### Deployment
-- **Render.com** — Backend hosting (free)
-- **Vercel** — Frontend hosting (free)
-- **GitHub** — Version control
 
-## ⚡ Quick Start (One-Click Launch)
-
-### Windows
-
-Double-click `start-both.bat` to launch all servers:
-- ✅ Backend API (port 8000)
-- ✅ React Frontend (port 8080)
-- ✅ Streamlit Dashboard (port 8501)
-
-OR double-click `start-servers.bat` for just Backend + Frontend (no Streamlit).
-
-All servers will auto-start and browser will open to http://localhost:8080
-
-### Manual Start
-
-**Terminal 1 - Backend:**
-```bash
-conda activate predmaint
-python -m uvicorn start_api:app --reload --port 8000
-```
-
-**Terminal 2 - Frontend:**
-```bash
-cd frontend
-npm run dev
-```
-
-**Terminal 3 - Streamlit (Optional):**
-```bash
-conda activate predmaint
-streamlit run dashboard/app.py
-```
+| Tool | Purpose |
+|------|---------|
+| **Render.com** | Backend hosting (free tier) |
+| **Vercel** | Frontend hosting (free tier) |
+| **GitHub** | Version control |
 
 ---
 
@@ -172,7 +158,7 @@ streamlit run dashboard/app.py
 - 📈 138,361 training sequences (30-cycle windows)
 - 🎛️ 15 useful sensors (removed 6 constants)
 - ⚙️ Run-to-failure data with ground truth RUL
-- 🏆 Industry-standard benchmark
+- 🏆 Industry-standard benchmark used worldwide
 
 **15 Sensors:**
 Temperature (fan, LPC, HPC, LPT) • Pressure (fan, bypass, HPC) • Speed (physical fan RPM, core RPM, corrected speeds) • Fuel flow ratio • Pressure ratios • Bypass ratio
@@ -183,39 +169,42 @@ Temperature (fan, LPC, HPC, LPT) • Pressure (fan, bypass, HPC) • Speed (phys
 
 ### Why Transformer?
 
-**Transformers** (powers ChatGPT) excel at sequences:
+**Transformers** (same architecture as ChatGPT) excel at sequences:
 - ✅ Sees entire 30-cycle window at once (long-range patterns)
 - ✅ Attention mechanism focuses on important cycles
-- ✅ Explainable: can extract which sensors matter
+- ✅ Explainable: extract which sensors matter most
 - ❌ LSTM (old way): forgets distant past, black box
 
 ### Architecture
+
+```
 Input (batch, 30, 15)
-↓
+         ↓
 Linear Projection (15 → 32)
-↓
+         ↓
 Positional Encoding
-↓
+         ↓
 Transformer Layer 1 (4 heads)
-↓
+         ↓
 Transformer Layer 2 (4 heads)
-↓
+         ↓
 Global Average Pooling
-↓
-┌─────────┴─────────┐
-↓                   ↓
-Anomaly Head     RUL Head
-(Sigmoid)        (Regression)
-↓                   ↓
-Probability 0-1  Cycles 0-125
+         ↓
+    ┌─────────┴─────────┐
+    ↓                   ↓
+Anomaly Head        RUL Head
+ (Sigmoid)         (Regression)
+    ↓                   ↓
+Probability 0-1    Cycles 0-125
+```
 
 **Specs:**
-- 📦 18,690 parameters (lightweight)
+- 📦 18,690 parameters (lightweight for edge)
 - 💾 145KB PyTorch → 181KB ONNX
 - ⚡ 0.20ms average inference
 - 🎯 97.68% validation accuracy
 
-**Dual-Head Benefit:** One model does two tasks (anomaly + RUL) — 23% smaller than two separate models, better accuracy through shared learning.
+**Dual-Head Benefit:** One model predicts both anomaly AND RUL — 23% smaller than two separate models, better accuracy through shared learning.
 
 ---
 
@@ -229,21 +218,19 @@ Probability 0-1  Cycles 0-125
 | **AUC-ROC** | **0.997** | Near-perfect class separation |
 | **F1 Score** | **0.8166** | Balanced precision & recall |
 | **Precision** | **0.8360** | 83.6% of alerts are real |
-| **Recall** | **0.7982** | Catches 79.8% of failures |
-| **False Positives** | **0.7%** | Only 1 per 143 predictions |
+| **Recall** | **0.7982** | Catches 79.8% of all failures |
+| **False Positives** | **0.7%** | Only 1 false alarm per 143 predictions |
 
 ### Confusion Matrix
-            Predicted
-        Normal  Anomaly
-Actual Normal  17,089    123   ← 99.3% correct
-Anomaly    711  2,708   ← 79.2% caught
-Total: 20,631 test samples
 
-**What This Means:**
-- **17,089 True Negatives:** Correctly said "normal"
-- **123 False Positives:** Said "anomaly" but was normal (0.7% false alarm rate)
-- **711 False Negatives:** Missed real anomalies (20.8%)
-- **2,708 True Positives:** Correctly caught anomalies
+```
+                Predicted
+            Normal    Anomaly
+Actual Normal  17,089      123   ← 99.3% correct
+       Anomaly    711    2,708   ← 79.2% caught
+
+Total: 20,631 test samples
+```
 
 ### Business Impact
 
@@ -254,7 +241,7 @@ Total: 20,631 test samples
 | 🔧 **Maintenance Cost** | **$980** (parts + labor) |
 | 📊 **ROI** | **35,600%** ($350K saved / $980 spent) |
 | ☁️ **Cloud Cost Avoided** | **$24,000/year** ($2K/month) |
-| ⚡ **Power Savings** | **$1,800/year** per device |
+| ⚡ **Power Savings** | **$1,800/year** per edge device |
 
 ### Speed Comparison
 
@@ -267,92 +254,95 @@ Total: 20,631 test samples
 
 ---
 
-## 🎨 Dashboard Features (9 Pages)
+## 🎨 Dashboard Features
 
-### 📱 Streamlit Dashboard
+### 📱 Streamlit Dashboard (9 Pages) — `http://localhost:8501`
 
-**9 comprehensive pages** at `http://localhost:8501`
+| Page | Features |
+|------|---------|
+| 🔴 **Live Monitoring** | Real-time charts, metric cards, alert banner, agent recommendations |
+| 📊 **Model & Edge Stats** | Size comparison, latency proof, architecture diagram |
+| 🔄 **MLOps & Retraining** | Drift detection, prediction monitoring, one-click retrain |
+| 🤖 **Agent Log** | Alert history, severity breakdown chart |
+| 💰 **Cost & Power Savings** | Edge vs cloud comparison, ROI calculator |
+| 📈 **Dataset Comparison** | All 4 datasets, AUC-ROC charts, confusion matrices |
+| 🗺️ **Sensor Heatmap** | Explainable AI attention visualization |
+| 📋 **Maintenance Report** | Auto-generated plain-English reports, downloadable .txt |
+| ⏰ **Failure Timeline** | Gantt chart with Safe/Warning/Danger zones |
 
-#### 1. 🔴 Live Monitoring
-- Real-time charts (anomaly probability, health score)
-- 5 metric cards (prob, health, status, latency, alerts)
-- Alert banner for HIGH/CRITICAL
-- Agent recommendations panel
-- Mode selector (Normal/Warning/Fault)
-- 1-second refresh rate
+### 🌐 React Web Dashboard (13 Pages) — `http://localhost:8080`
 
-#### 2. 📊 Model & Edge Stats
-- Size comparison chart (PyTorch → ONNX)
-- Edge deployment proof table
-- Latency benchmark (0.20ms)
-- Architecture diagram
-- Parameter count (18,690)
+| Page | Description |
+|------|-------------|
+| 🚀 **Landing Page** | Animated hero with project stats, floating shapes, launch button |
+| 🔴 **Live Monitor** | Real-time anomaly + health charts, metric cards, agent panel |
+| ⚙️ **Digital Twin** | Interactive 3D engine model with real-time health color mapping |
+| 🚢 **Fleet Overview** | 50 engine cards sorted by risk level with health bars |
+| 📈 **Analytics** | Cross-dataset evaluation, AUC-ROC bar charts, confusion matrices |
+| 🗺️ **Sensor Heatmap** | 15-sensor importance visualization, fault mode selector |
+| ⏰ **Failure Timeline** | RUL → calendar dates, Gantt chart with colored zones |
+| 📋 **Reports** | Generate + download maintenance reports |
+| 🤖 **Agent Log** | Alert history, severity chart, expandable details |
+| 📊 **Dataset Stats** | NASA dataset details and statistics |
+| 💰 **Cost Savings** | Financial impact, edge vs cloud comparison |
+| ℹ️ **Model Info** | Model performance, edge deployment proof table |
+| 🔔 **Notifications** | Alert settings, escalation rules, notification channels |
 
-#### 3. 🔄 MLOps & Retraining
-- Drift detection status
-- Prediction monitoring
-- One-click retrain trigger
-- MLflow integration link
-- Pipeline flow diagram
+### ✨ UI/UX Features
 
-#### 4. 🤖 Agent Log
-- Total alerts counter
-- Severity breakdown chart
-- Expandable alert history
-- Last 20 alerts with details
-- Root cause per alert
-
-#### 5. 💰 Cost & Power Savings
-- Edge vs Cloud comparison cards
-- Financial impact table
-- Power consumption metrics
-- ROI calculator
-- Annual savings breakdown
-
-#### 6. 📈 Dataset Comparison
-- All 4 dataset metrics
-- AUC-ROC bar charts
-- Accuracy comparison
-- 4 confusion matrices
-- Cross-domain insights
-
-#### 7. 🗺️ Sensor Heatmap (Explainable AI)
-- Horizontal bar chart (sensor importance)
-- 2D time-series heatmap
-- Fault mode selector
-- Top 3 sensors highlighted
-- Physical component mapping
-
-#### 8. 📋 Maintenance Report
-- Input sliders (engine ID, prob, RUL)
-- Report generator
-- Plain-English output
-- Downloadable .txt
-- Cost analysis
-
-#### 9. ⏰ Failure Timeline
-- RUL → calendar dates
-- Gantt chart with zones (Safe/Warning/Danger)
-- Milestone markers (Inspect, Order Parts, Maintenance, Failure)
-- Action schedule table
-- Degradation rate analysis
-
-### 🌐 React Web Dashboard
-
-Modern interface at `http://localhost:8080`
-
-**Features:**
-- Dark glassmorphism theme (#0A0F1E)
-- Collapsible sidebar (240px ↔ 72px)
-- Real-time polling (1-second)
-- Framer Motion animations
-- Recharts visualizations
-- Fleet overview (50 engine cards)
-- Responsive design
+- ⚡ **Custom lightning bolt cursor** with glow effects (changes color on hover/click)
+- 🌙 **Dark glassmorphism theme** (#0A0F1E background, #111827 cards)
+- 🎭 **Framer Motion animations** — page transitions, card fade-in, hover effects
+- 🔔 **Real-time bell notification** with unread counter and toast popups
+- 🔊 **Sound alerts** — audio tone for HIGH/CRITICAL anomalies
+- 📱 **Collapsible sidebar** (240px expanded ↔ 72px collapsed)
+- ⚙️ **Animated favicon** — pulsing lightning bolt in browser tab
+- 🎯 **Auto-rotating 3D engine** when no component selected
 
 ---
 
-## ⚡ Quick Start (5 Minutes)
+## 🌡️ Digital Twin Simulator (NEW)
+
+An **interactive 3D turbofan engine** powered by Three.js — one of the most unique features:
+
+- 🔄 **Fan blades** spin speed based on engine health
+- 🔥 **Combustion chamber** glows and pulses with heat animation
+- ⚙️ **Turbine blades** rotate with degradation feedback
+- 💀 **Critical particle effects** appear when failure is imminent
+- 🎨 **Color-coded health**: green (healthy) → yellow (warning) → red (critical)
+- 👆 **Click any component** → see detailed health panel
+- 📊 **15 sensor bars** updating live at bottom
+- 🖱️ **Drag to rotate**, scroll to zoom, click to inspect
+- 3 simulation modes: Normal / Warning / Fault
+
+**Components Monitored:**
+1. Fan Assembly (blade wear, bearing health)
+2. Engine Nacelle (structural integrity)
+3. HPC Compressor (high-pressure degradation)
+4. Combustion Chamber (fuel efficiency)
+5. LPT Turbine (low-pressure outlet)
+
+---
+
+## 🔔 Real-Time Alert Notification System (NEW)
+
+Enterprise-grade alert management system:
+
+- 🔔 **Bell icon counter** — live unread alert count in top bar
+- 🍞 **Toast notifications** — animated pop-ups with auto-dismiss timer
+- 🔊 **Sound alerts** — configurable audio tone for new alerts
+- 📧 **Email channel** — configurable email address
+- 📱 **SMS channel** — configurable phone number
+- ⬆️ **Escalation rules** — LOW→Supervisor, MEDIUM→Lead, HIGH→Manager, CRITICAL→CEO
+- ✅ **Acknowledge** — mark individual or all alerts as read
+- 🗑️ **Clear all** — reset alert history
+- 📊 **Severity breakdown chart** — bar chart of LOW/MEDIUM/HIGH/CRITICAL counts
+- 📋 **Alert history** — last 20 alerts with full details and expandable view
+- 🎨 **Color-coded severity badges** with glow effects
+
+---
+
+## ⚡ Quick Start
 
 ### Prerequisites
 
@@ -360,8 +350,8 @@ Modern interface at `http://localhost:8080`
 |----------|---------|----------|
 | Python | 3.10 | python.org |
 | Anaconda | Latest | anaconda.com |
+| Node.js | 18+ | nodejs.org |
 | Git | Latest | git-scm.com |
-| Node.js | 18+ | nodejs.org (optional, for React) |
 
 ### Installation
 
@@ -370,48 +360,71 @@ Modern interface at `http://localhost:8080`
 git clone https://github.com/Monish0306/edge-predictive-maintenance.git
 cd edge-predictive-maintenance
 
-# 2. Create environment
+# 2. Create conda environment
 conda create -n predmaint python=3.10 -y
 conda activate predmaint
 
-# 3. Install dependencies
+# 3. Install Python dependencies
 pip install torch onnxruntime fastapi uvicorn mlflow streamlit plotly scikit-learn pandas
 
-# 4. Run backend
+# 4. Run backend API
 python -m uvicorn start_api:app --reload --port 8000
 
-# 5. Run dashboard (new terminal)
+# 5. Run Streamlit dashboard (new terminal)
 streamlit run dashboard/app.py
+
+# 6. Run React frontend (new terminal)
+cd frontend
+npm install
+npm run dev
 ```
 
 **Access:**
 - 🔌 Backend API: http://localhost:8000
 - 📚 API Docs: http://localhost:8000/docs
-- 📊 Dashboard: http://localhost:8501
+- 📊 Streamlit: http://localhost:8501
+- 🌐 React App: http://localhost:8080
+
+### ⚡ One-Click Launch (Windows)
+
+Double-click `start-both.bat` in project root:
+```
+✅ Backend API      → http://localhost:8000
+✅ React Frontend   → http://localhost:8080
+✅ Streamlit        → http://localhost:8501
+Browser opens automatically!
+```
 
 ---
 
 ## 🧪 API Documentation
 
 ### Base URL
-Local: http://localhost:8000
-Production: https://predictive-maintenance-api.onrender.com
+
+```
+Local:      http://localhost:8000
+Production: https://edge-ai-fastapi.onrender.com
+```
 
 ### Endpoints
 
-#### GET `/simulate`
-Generate prediction for one engine
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/` | GET | API status and version |
+| `/health` | GET | Health check with timestamp |
+| `/simulate` | GET | Single engine prediction |
+| `/fleet` | GET | Multiple engine predictions (sorted by risk) |
+| `/metadata` | GET | Model performance metrics |
+| `/evaluation` | GET | Cross-dataset evaluation results |
 
-**Parameters:**
-- `mode`: `"normal"` | `"warning"` | `"fault"` (default: `"normal"`)
-- `engine_id`: Integer 1-100 (default: `1`)
+### Example Request
 
-**Example:**
 ```bash
-curl "http://localhost:8000/simulate?mode=fault&engine_id=47"
+curl "https://edge-ai-fastapi.onrender.com/simulate?mode=fault&engine_id=47"
 ```
 
-**Response:**
+### Example Response
+
 ```json
 {
   "engine_id": 47,
@@ -439,23 +452,9 @@ curl "http://localhost:8000/simulate?mode=fault&engine_id=47"
 }
 ```
 
-#### GET `/fleet?count=50`
-Get multiple engine predictions (sorted by risk)
-
-#### GET `/metadata`
-Model performance metrics
-
-#### GET `/evaluation`
-Cross-dataset results (all 4 datasets)
-
-#### GET `/health`
-Health check
-
 ---
 
 ## 🔬 Training from Scratch
-
-Want to retrain the model?
 
 ```bash
 # 1. Preprocess data (~30 seconds)
@@ -470,84 +469,108 @@ python src/model/convert_to_onnx.py
 # 4. Evaluate on all datasets (~1 minute)
 python src/model/evaluate.py
 
-# 5. View experiments
+# 5. View MLflow experiments
 mlflow ui  # → http://localhost:5000
 ```
 
 **Training Output:**
-Epoch 1/25: Train Loss=0.4521, Val Acc=91.23%
-Epoch 2/25: Train Loss=0.3654, Val Acc=93.67%
+```
+Epoch 1/25:  Train Loss=0.4521, Val Acc=91.23%
+Epoch 2/25:  Train Loss=0.3654, Val Acc=93.67%
 ...
 Epoch 18/25: Train Loss=0.1234, Val Acc=97.68% ⭐
 Best model saved!
+```
 
 ---
 
 ## 📁 Project Structure
+
+```
 edge-predictive-maintenance/
-├── data/
-│   ├── raw/                  # NASA datasets (.txt files)
-│   └── processed/            # Preprocessed arrays (.npy)
-├── models/
-│   ├── saved/                # PyTorch checkpoints
-│   └── onnx/                 # Edge deployment models
-├── src/
-│   ├── data_processing/      # preprocess.py
-│   ├── model/                # train, evaluate, ONNX convert
-│   ├── agent/                # maintenance agent, reports
-│   └── mlops/                # drift detection
-├── dashboard/                # Streamlit app (9 pages)
-├── notebooks/                # Jupyter exploration
-├── start_api.py              # FastAPI entry point
-├── docker-compose.yml        # Container orchestration
-├── requirements.txt          # Python dependencies
-└── README.md                 # This file
+├── 📂 data/
+│   ├── raw/                    # NASA datasets (.txt files)
+│   └── processed/              # Preprocessed arrays (.npy)
+├── 📂 models/
+│   ├── saved/                  # PyTorch checkpoints (.pth)
+│   └── onnx/                   # Edge deployment models (.onnx)
+├── 📂 src/
+│   ├── data_processing/        # preprocess.py
+│   ├── model/                  # train, evaluate, ONNX convert
+│   ├── agent/                  # maintenance agent, reports, timeline
+│   └── mlops/                  # drift detection, model monitor
+├── 📂 dashboard/               # Streamlit app (9 pages)
+├── 📂 frontend/                # React web app
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── AppSidebar.tsx      # Collapsible navigation
+│   │   │   ├── AppLayout.tsx       # Main layout with bell
+│   │   │   ├── CustomCursor.tsx    # ⚡ Lightning bolt cursor
+│   │   │   ├── NotificationBell.tsx # 🔔 Alert bell
+│   │   │   ├── AlertToast.tsx      # Toast notifications
+│   │   │   └── ui/
+│   │   │       └── shape-landing-hero.tsx  # Animated landing
+│   │   ├── pages/
+│   │   │   ├── LiveMonitor.tsx     # Real-time monitoring
+│   │   │   ├── DigitalTwin.tsx     # 3D engine model ⭐NEW
+│   │   │   ├── Notifications.tsx   # Alert settings ⭐NEW
+│   │   │   ├── FleetOverview.tsx   # 50 engine cards
+│   │   │   ├── Analytics.tsx       # Dataset comparison
+│   │   │   ├── SensorHeatmap.tsx   # Explainable AI
+│   │   │   ├── FailureTimeline.tsx # Timeline + Gantt
+│   │   │   ├── Reports.tsx         # Report generator
+│   │   │   ├── AgentLog.tsx        # Alert history
+│   │   │   ├── DatasetStats.tsx    # Dataset info
+│   │   │   ├── CostSavings.tsx     # ROI dashboard
+│   │   │   └── ModelInfo.tsx       # Model metrics
+│   │   └── lib/
+│   │       ├── api.ts              # All API calls
+│   │       └── alertStore.ts       # Global alert state
+│   ├── public/
+│   │   └── favicon.svg             # ⚡ Animated lightning favicon
+│   └── index.html                  # Entry point
+├── 📂 notebooks/               # Jupyter exploration
+├── ⚙️ start_api.py             # FastAPI entry point
+├── 🚀 start-both.bat           # One-click launcher
+├── 🐳 docker-compose.yml       # Container orchestration
+├── 📋 requirements.txt         # Python dependencies
+└── 📖 README.md                # This file
+```
 
 ---
 
 ## 🐳 Docker Deployment
 
-One-command deploy:
-
 ```bash
 docker-compose up --build
 ```
 
-**Access:**
+Access:
 - Dashboard: http://localhost:8501
-- MLflow: http://localhost:5000
+- MLflow:    http://localhost:5000
 
 ---
 
 ## 🌍 Production Deployment (FREE)
 
-Deploy to cloud for public access:
-
 ### Backend → Render.com
 
-1. Push to GitHub
-2. Go to render.com → Sign up with GitHub
-3. New Web Service → Connect repo
-4. Settings:
-   - Runtime: Python 3
-   - Build: `pip install -r requirements.txt`
+1. Go to **render.com** → New Web Service
+2. Connect `edge-predictive-maintenance` repo
+3. Configure:
+   - Runtime: `Python 3`
+   - Build: `pip install fastapi uvicorn onnxruntime numpy pydantic python-multipart`
    - Start: `uvicorn start_api:app --host 0.0.0.0 --port $PORT`
-   - Instance: Free
-5. Deploy (5-10 minutes)
-6. Copy URL: `https://your-app.onrender.com`
+   - Instance: **Free**
+4. Deploy → Copy URL: `https://edge-ai-fastapi.onrender.com`
 
 ### Frontend → Vercel
 
-1. Create separate repo for `predmaint-web/`
-2. Go to vercel.com → Sign up with GitHub
-3. Import repo
-4. Settings:
-   - Framework: Vite
-   - Build: `npm run build`
-   - Output: `dist`
-   - Env: `VITE_API_URL=<render-backend-url>`
-5. Deploy (2-3 minutes)
-6. Copy URL: `https://your-app.vercel.app`
+1. Go to **vercel.com** → Import project
+2. Root Directory: `frontend`
+3. Framework: `Vite`
+4. Environment Variable: `VITE_API_URL=https://edge-ai-fastapi.onrender.com`
+5. Deploy → Copy URL: `https://edge-predictive-maintenance.vercel.app`
 
 **Total Cost: $0/month** ✅
 
@@ -556,35 +579,39 @@ Deploy to cloud for public access:
 ## 🎯 Use Cases
 
 ### Manufacturing
-- Automotive assembly lines
-- Aerospace engine testing
-- Semiconductor fabrication
-- Industrial machinery
+- 🚗 Automotive assembly lines ($2.3M/hour downtime)
+- ✈️ Aerospace engine testing (Boeing uses digital twins)
+- 💻 Semiconductor fabrication ($1M+/hour)
+- ⚙️ Industrial machinery monitoring
 
 ### Energy
-- Power plant turbines
-- Wind farm generators
-- Oil & gas pipelines
-- Solar farm inverters
+- ⚡ Power plant turbines
+- 🌬️ Wind farm generators
+- 🛢️ Oil & gas pipelines
+- ☀️ Solar farm inverters
 
 ### Transportation
-- Aircraft engines
-- Ship propulsion systems
-- Railway traction motors
-- Heavy equipment
+- ✈️ Aircraft engines
+- 🚢 Ship propulsion systems
+- 🚂 Railway traction motors
+- ⛏️ Heavy mining equipment
 
 ---
 
 ## 🔮 Future Improvements
 
-- [ ] Multi-model ensemble
-- [ ] Transfer learning for domain adaptation
-- [ ] Real-time streaming with Kafka
+- [ ] Real email/SMS alerts via EmailJS + Twilio
+- [ ] OEE Dashboard (Overall Equipment Effectiveness)
+- [ ] Smart Maintenance Scheduler with calendar
+- [ ] Financial Impact ROI counter (live money saved)
+- [ ] Multi-model ensemble for better accuracy
+- [ ] Transfer learning for domain adaptation (FD002/FD004)
+- [ ] Real-time streaming with Apache Kafka
 - [ ] Mobile app (iOS/Android)
-- [ ] Advanced visualizations (3D plots)
-- [ ] Integration with ERP systems
+- [ ] Multi-plant world map overview
+- [ ] ERP system integration (SAP, Oracle)
+- [ ] Voice alerts via text-to-speech
 - [ ] Multi-language support
-- [ ] Voice alerts
 
 ---
 
@@ -621,8 +648,8 @@ MIT License — Free for commercial and private use.
 
 - **NASA** — CMAPSS Turbofan dataset
 - **Anthropic Claude** — Development assistance
-- **Open-source community** — All libraries used
-- **Research community** — Transformer architecture
+- **Open-source community** — PyTorch, FastAPI, React, Three.js, Framer Motion
+- **Research community** — Transformer architecture foundations
 
 ---
 
@@ -630,18 +657,27 @@ MIT License — Free for commercial and private use.
 
 1. [NASA CMAPSS Dataset](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/)
 2. [Attention Is All You Need (Transformer paper)](https://arxiv.org/abs/1706.03762)
-3. [ONNX](https://onnx.ai/)
+3. [ONNX Runtime](https://onnxruntime.ai/)
 4. [FastAPI](https://fastapi.tiangolo.com/)
-5. [Streamlit](https://streamlit.io/)
+5. [Three.js](https://threejs.org/)
+6. [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
+7. [Streamlit](https://streamlit.io/)
 
 ---
 
 ## 🎯 Resume Bullet Point
-Edge AI Predictive Maintenance: PyTorch Dual-Head Transformer on NASA
-Turbofan (709 engines) achieving 98.82% accuracy, 0.997 AUC-ROC, 0.20ms
-ONNX inference (250× faster). Full MLOps (MLflow, drift detection),
-explainable AI heatmaps, 9-page dashboard, FastAPI REST API, Docker
-deployment. Saves $350K+ per alert. Deployed to Render + Vercel.
+
+```
+Edge AI Predictive Maintenance: PyTorch Dual-Head Transformer on NASA 
+Turbofan (709 engines) — 98.82% accuracy, 0.997 AUC-ROC, 0.20ms ONNX 
+edge inference (250× faster than requirement). Full MLOps pipeline 
+(MLflow experiment tracking, drift detection, auto-retraining), autonomous 
+maintenance agent with explainable AI heatmaps, interactive 3D Digital 
+Twin simulator (Three.js), real-time alert notification system with 
+escalation rules, 9-page Streamlit + 13-page React dashboard, FastAPI 
+REST API, Docker deployment. $350K+ savings per critical alert. 
+Deployed publicly: Render.com + Vercel (free tier).
+```
 
 ---
 
