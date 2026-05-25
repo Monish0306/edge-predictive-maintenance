@@ -21,6 +21,8 @@ import ModelInfo from "./pages/ModelInfo";
 import NotFound from "./pages/NotFound";
 import DigitalTwin from "./pages/DigitalTwin";
 import Notifications from "./pages/Notifications";
+import OEEDashboard from "./pages/OEEDashboard";
+import PlantMap from "./pages/PlantMap";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +60,8 @@ const App = () => {
                 <Routes>
                   <Route element={<AppLayout />}>
                     <Route path="/" element={<LiveMonitor />} />
+                    <Route path="/oee" element={<OEEDashboard />} />
+                    <Route path="/plant-map" element={<PlantMap />} />
                     <Route path="/notifications" element={<Notifications />} />
                     <Route path="/digital-twin" element={<DigitalTwin />} />
                     <Route path="/fleet" element={<FleetOverview />} />

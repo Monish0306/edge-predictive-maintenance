@@ -4,11 +4,10 @@ import {
   Activity, Cpu, BarChart3, Map, Clock, FileText,
   Bot, Database, DollarSign, Settings,
   ChevronLeft, ChevronRight, Bell,
+  Globe,
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-
-
 const items = [
   { title: "Live Monitor",     url: "/",          icon: Activity,   color: "#EF4444" },
   { title: "Fleet Overview",   url: "/fleet",     icon: Cpu,        color: "#3B82F6" },
@@ -22,6 +21,8 @@ const items = [
   { title: "Model Info",       url: "/model",     icon: Settings,   color: "#94A3B8" },
   { title: "Digital Twin", url: "/digital-twin", icon: Cpu, color: "#06B6D4" },
   { title: "Notifications", url: "/notifications", icon: Bell, color: "#F59E0B" },
+  { title: "OEE Dashboard",  url: "/oee",       icon: BarChart3, color: "#10B981" },
+  { title: "Plant Map",      url: "/plant-map",  icon: Globe,     color: "#06B6D4" },
 ];
 
 export const AppSidebar = () => {
