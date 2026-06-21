@@ -3,6 +3,7 @@ import { AppSidebar } from "./AppSidebar";
 import { AnimatePresence, motion } from "framer-motion";
 import NotificationBell from "./NotificationBell";
 import AlertToastContainer from "./AlertToast";
+import ChatbotWidget from "./ChatbotWidget";
 
 export const AppLayout = () => {
   const location = useLocation();
@@ -34,8 +35,11 @@ export const AppLayout = () => {
         </main>
       </div>
 
-      {/* Toast container - always visible */}
+      {/* Toast notifications */}
       <AlertToastContainer />
+
+      {/* ⭐ RAG Chatbot - Floating bottom-right */}
+      <ChatbotWidget engineId={1} mode="normal" />
     </div>
   );
 };
