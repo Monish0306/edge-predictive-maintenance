@@ -10,6 +10,10 @@ data/raw/*.txt
 data/processed/*.npy
 mlruns/
 models/saved/*.pth
+data/raw/
+data/processed/
+!data/rag_db/
+!data/bm25_index/
 
 # Frontend
 frontend/node_modules/
