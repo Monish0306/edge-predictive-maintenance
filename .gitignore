@@ -5,6 +5,7 @@ __pycache__/
 env/
 venv/
 
+
 # Data
 data/raw/*.txt
 data/processed/*.npy
@@ -27,3 +28,7 @@ frontend/.env
 # OS
 .DS_Store
 *.log
+
+# BUT commit the RAG indexes — Render needs them
+!data/rag_db/
+!data/bm25_index/
