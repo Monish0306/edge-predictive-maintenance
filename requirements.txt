@@ -19,3 +19,5 @@ langchain-community
 langchain-core
 rank-bm25
 groq
+langchain-huggingface
+langchain-chroma
